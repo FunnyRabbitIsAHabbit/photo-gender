@@ -1,0 +1,276 @@
+/*
+
+CSS File for the project
+
+*/
+
+* {
+    font-family: "Avenir Next", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    html {
+        background: url(images/background_single.svg) no-repeat center center fixed;
+        backdrop-filter: blur(20px);
+    }
+
+    #upload-button {
+        color-scheme: dark;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+
+    html {
+        background: url(images/background_single.svg) no-repeat center center fixed;
+        backdrop-filter: blur(20px);
+    }
+
+    #upload-button {
+        color-scheme: normal;
+    }
+}
+
+html, body {
+    margin: 0;
+}
+
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+body {
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+}
+
+.advertisement {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    width: 100%;
+    height: 5%;
+    padding-left: 0;
+    background-color: whitesmoke;
+    justify-content: inherit;
+    display: inline-block;
+    font-family: "Avenir Next Condensed", sans-serif;
+    font-size: 100%;
+}
+
+img {
+    float: top;
+    width: fit-content;
+    height: auto;
+    max-width: 200px;
+    margin: 0;
+    padding: 0;
+}
+
+#serverMsg {
+    padding: 0px;
+}
+
+div, header {
+    padding: 15px;
+    text-align: center;
+    text-align-all: match-parent;
+    font-size: large;
+    margin: auto;
+    width: auto;
+    justify-content: center;
+}
+
+header {
+    background: url("images/bubbles.svg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    width: auto !important;
+    height: auto;
+    float: top;
+    justify-self: start;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3vmin;
+    color: #2b1918;
+}
+
+header h2 span {
+    font-family: "Arial Black", sans-serif;
+}
+
+.tablink, #middle-tab .not-list button {
+    background-color: #3d2321;
+    color: white;
+    float: left;
+    justify-self: start;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 3vmax 2vmax;
+    margin-bottom: 5%;
+    margin-top: 0;
+    font-size: 3.5vmin;
+    width: 25%; /*  100% / num_of_tabs  */
+}
+
+.tablink:hover, #middle-tab .not-list button:hover {
+    background-color: #2b1918;
+    color: blanchedalmond;
+}
+
+.tabcontent {
+    display: none;
+    height: 100%;
+    margin: auto;
+    justify-content: flex-end;
+    font-size: 2vmax;
+}
+
+.author {
+    justify-content: center;
+    margin: auto;
+    width: fit-content;
+    padding-top: 15px;
+    font-size: 1.5vmax;
+}
+
+#input {
+    align-items: center;
+    width: auto;
+    height: fit-content;
+}
+
+#output {
+    height: auto;
+    font-size: 2vmax;
+    max-width: 80%;
+}
+
+#upload-button {
+    width: fit-content;
+}
+
+.button-17 {
+    align-items: center;
+    appearance: none;
+    background-color: #3d2321;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: currentcolor;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    width: 200px;
+    justify-content: center;
+    letter-spacing: .25px;
+    line-height: normal;
+    max-width: 100%;
+    overflow: visible;
+    padding: 2px 24px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform, opacity;
+    z-index: 0;
+}
+
+.button-17:hover {
+    background: #2b1918;
+    color: blanchedalmond;
+}
+
+.button-17:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+}
+
+.button-17:focus {
+    outline: none;
+    border: 2px solid #4285f4;
+}
+
+.button-17:not(:disabled) {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):hover {
+    box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#file-input {
+    padding: inherit;
+    width: max-content;
+}
+
+#right-tab {
+    justify-content: left;
+    font-size: medium;
+    text-align: left;
+}
+
+#middle-tab .not-list {
+    list-style-type: none;
+}
+
+#right2-tab, #middle-tab .not-list {
+    padding-left: 0;
+    padding-right: 0;
+    display: inline-grid;
+
+}
+
+#right2-tab ol, ul, h6 {
+    padding-left: 1vmin !important;
+}
+
+#middle-tab .not-list button {
+    width: 100% !important;
+}
+
+#middle-tab .not-list span {
+    display: none !important;
+}
+
+#agreement {
+    font-size: inherit;
+    justify-content: inherit;
+    text-align: inherit;
+    background-color: #fff;
+    margin: fill;
+}
+
+ul {
+    list-style-type: square;
+}

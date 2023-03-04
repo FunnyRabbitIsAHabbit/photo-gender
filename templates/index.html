@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="latin-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Stan Ermokhin">
+    <link rel="stylesheet" href="{{url_for('static', path='main.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', path='images\/favicon.ico')}}" />
+    <link rel="shortcut icon" href="../static/images/favicon.ico" />
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Image Gender Recognition</title></head>
+<body>
+<header>
+    <h2><span>Check their gender with a photo</span></h2>
+</header>
+
+<script type="text/javascript">
+    function previewFile() {
+        const preview = document.querySelector('img');
+        let file = document.getElementById("file-input").files[0];
+        const reader = new FileReader();
+        reader.addEventListener("load", function () {
+            preview.src = reader.result.toString(); // show image in <img> tag
+        }, false);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+        document.getElementById("serverMsg").innerHTML = "";
+    }
+
+    function uploadFile() {
+        let file = document.getElementById("file-input").files[0];
+        if (file) {
+            let formData = new FormData();
+            formData.append('file', file);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data["gender"]) {
+                        document.getElementById("serverMsg").innerHTML = data["error_message"].toString();
+                    } else {
+                        document.getElementById("serverMsg").innerHTML = data["gender"].toString();
+                    }
+                    let modelVersion = data["model_version"];
+                    document.getElementById("model_version").innerHTML = modelVersion.toString();
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    }
+</script>
+<section class="upper">
+
+    <script type="text/javascript">
+        function openPage(pageName, elmnt) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                if (elmnt !== tablinks[i]) {
+                    tablinks[i].style.backgroundColor = "";
+                } else {
+                    tablinks[i].style.backgroundColor = "#2b1918";
+                }
+
+            }
+
+            document.getElementById(pageName).style.display = "block";
+        }
+    </script>
+    <button class="tablink" onclick="openPage('left-tab', this)" id="defaultOpen">Home</button>
+    <button class="tablink" onclick="openPage('middle-tab', this)">Contacts</button>
+    <button class="tablink" onclick="openPage('right-tab', this)">Agreement</button>
+    <button class="tablink" onclick="openPage('right2-tab', this)">About</button>
+    <div id="left-tab" class="tabcontent">
+        <div id="input">
+            <label for="file-input" id="input-label">Your Image File:</label><br>
+            <input type="file" class="button-17" id="file-input" onchange="previewFile()"><br>
+            <input type="button" class="button-17" role="button" id="upload-button" value="Evaluate Gender"
+                   onclick="uploadFile()">
+        </div>
+        <div id="output">
+            <p id="serverMsg"></p>
+            <img height="" width="" src="" alt="">
+            <p>
+                This service is under continuous development.<br>
+                Current neural network version: <i id="model_version">to be acquired</i>
+            </p>
+        </div>
+    </div>
+    <div id="middle-tab" class="tabcontent">
+        <script type="text/javascript">
+            function copy(elementId) {
+                // Get the text field
+                let copyText = document.getElementById(elementId).getElementsByTagName("span")[0];
+
+                navigator.clipboard.writeText(copyText.innerText);
+
+                // Alert the copied text
+                alert("Copied: " + copyText.innerText);
+            }
+        </script>
+        <p>Click to copy wallet address</p>
+        <ul class="not-list">
+            <li id="cryptoNano"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Nano</button>
+                <span>nano_3ujggh8jzf61rktd4wjpfigjgkkpiemaepefzyqrtnqcweb1u1sefczk1oeg</span></li>
+
+            <li id="cryptoETC"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">EthereumClassic</button>
+                <span>0xdfbD0761CD05c1FE6408C2F77B08317cc9549C34</span></li>
+
+            <li id="cryptoRVN"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ravencoin</button>
+                <span>RWpQjKs5GUr65Z746NXftgAv4rDUe1XZPC</span></li>
+
+            <li id="cryptoETH"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ethereum</button>
+                <span>0x26a1f94690e0A7dbf8fC3b46930227F400561F41</span></li>
+
+            <li id="cryptoBTC"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Bitcoin</button>
+                <span>bc1qasscfpacns9qugk40lv5s3tk60svh205ssu9n2</span></li>
+
+            <li id="cryptoAE"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Aeternity</button>
+                <span>ak_fHX26ZfVv9BuweaEJ7uZj6gFuMSM3rGnK9QNTdCdpRQCGRKXH</span></li>
+        </ul>
+    </div>
+    <div id="right-tab" class="tabcontent">
+        <div id="agreement">
+            <p>
+                BY USING THIS SERVICE, YOU CONSENT TO THE CONDITIONS LISTED BELOW
+            </p>
+            <p>USER AGREEMENT AND SECURITY NOTICE</p>
+            <ol>
+                <li>
+                    "Usage" of this service is defined by clicking any button
+                    (except for the "Agreement" button),
+                    as well interacting with the servers' URI and/or URL.
+                </li>
+                <li>
+                    For all purposes, the term "gender" refers to the biological definition,
+                    i.e. male or female.
+                </li>
+                <li>
+                    Each file attached will be saved<br>
+                    (highly likely temporarily so, but permanent save is also not improbable).
+                </li>
+                <li>
+                    It is to be processed through a deep learning neural network.
+                </li>
+                <li>
+                    When the file has been evaluated, and the result has been served,
+                    the file may or may not be attempted to be deleted.
+                </li>
+                <li>
+                    It may also be used for future training of the aforementioned network,
+                    as well as any new learning algorithm,
+                    whether it be a different neural network or any other algorithm.
+                </li>
+                <li>
+                    The version of the neural network currently being in use,
+                    as well as any possible versions, does not serve a guaranteed 100% result.
+                </li>
+                <li>
+                    The probabilistic nature of neural networks must be taken into account in its full capacity.
+                </li>
+                <li>
+                    Users of this service are not to be offended by the results served;<br>
+                    nor any third party should take offence.
+                </li>
+                <li>
+                    The processing of the file includes, but is not limited to:
+                    <ul>
+                        <li>Evaluation through a computerized neural network,</li>
+                        <li>Temporary save of the file for the time of evaluation.</li>
+                    </ul>
+                </li>
+                <li>
+                    The developers, creators, hosting services and/or server owners are in no way responsible
+                    for the contents of the files that are uploaded through this service.
+                </li>
+                <li>The purposes of this service are purely recreational, if not comedic.<br>
+                    It is not meant to be perceived as a form of discrimination, or any of the similar concepts.</li>
+            </ol>
+            <p>
+                <br>
+
+            </p>
+        </div>
+    </div>
+    <div id="right2-tab" class="tabcontent">
+        <ul><h6>Project tech stack</h6>
+            <li>Python 3.10</li>
+            <li>FastAPI</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Tensorflow, AioFiles, Pydantic</li>
+            <li>Docker</li>
+            <li>Serverless infrastructure</li>
+        </ul>
+        <ol><h6>Roadmap</h6>
+            <li>
+                <s>Move to serverless cloud</s>
+            </li>
+            <li>
+                <s>Update styles to pretty</s>
+            </li>
+            <li>
+                <s>DL Network version 4.0</s>
+            </li>
+            <li>
+                Ad Support
+            </li>
+            <li>
+                New networks
+            </li>
+            <li>
+                Blog Tab Section for project updates
+            </li>
+        </ol>
+    </div>
+    <script type="text/javascript">document.getElementById("defaultOpen").click();</script>
+</section>
+
+
+<section class="lower">
+    <div class="advertisement">
+        FEEL FREE TO SHARE WITH YOUR FRIENDS, HAVE FUN
+    </div>
+</section>
+
+
+<section class="author">
+    &copy; Stan Ermokhin | 2023
+</section>
+
+</body>
+</html>
