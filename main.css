@@ -11,8 +11,20 @@ CSS File for the project
 @media (prefers-color-scheme: dark) {
 
     html {
-        background: url(images/background_single.svg) no-repeat center center fixed;
+        background: url(images/background_dark.svg) no-repeat center center fixed;
         backdrop-filter: blur(20px);
+    }
+
+    div, .author, .advertisement {
+        color: white;
+    }
+
+    #agreement {
+        background-color: #704137;
+    }
+
+    .advertisement {
+        background-color: #db7062;
     }
 
     #upload-button {
@@ -27,8 +39,17 @@ CSS File for the project
         backdrop-filter: blur(20px);
     }
 
+    .advertisement, #agreement {
+        background-color: whitesmoke;
+    }
+
     #upload-button {
         color-scheme: normal;
+    }
+
+    #agreement {
+
+        background-color: #fff;
     }
 }
 
@@ -48,10 +69,6 @@ body {
     clear: both;
 }
 
-canvas {
-    display: none;
-}
-
 .advertisement {
     position: fixed;
     bottom: 0;
@@ -61,7 +78,7 @@ canvas {
     width: 100%;
     height: 5%;
     padding-left: 0;
-    background-color: whitesmoke;
+
     justify-content: inherit;
     display: inline-block;
     font-family: "Avenir Next Condensed", sans-serif;
@@ -271,8 +288,8 @@ header h2 span {
     font-size: inherit;
     justify-content: inherit;
     text-align: inherit;
-    background-color: #fff;
     margin: fill;
+    border-radius: 24px;
 }
 
 ul {
