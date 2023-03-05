@@ -48,6 +48,10 @@ body {
     clear: both;
 }
 
+canvas {
+    display: none;
+}
+
 .advertisement {
     position: fixed;
     bottom: 0;

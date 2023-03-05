@@ -4,61 +4,25 @@
     <meta charset="latin-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Stan Ermokhin">
-    <link rel="stylesheet" href="{{url_for('static', path='main.css')}}">
-    <link rel="shortcut icon" href="{{url_for('static', path='images\/favicon.ico')}}" />
-    <link rel="shortcut icon" href="../static/images/favicon.ico" />
-    <link rel="stylesheet" href="../static/main.css">
+
+    <link rel="shortcut icon" href="images\/favicon.ico"/>
+    <link rel="stylesheet" href="main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+
     <title>Image Gender Recognition</title></head>
 <body>
 <header>
     <h2><span>Check their gender with a photo</span></h2>
 </header>
+<noscript>Sorry, you seem to have disabled JavaScript. This service relies heavily on it.</noscript>
 
-<script type="text/javascript">
-    function previewFile() {
-        const preview = document.querySelector('img');
-        let file = document.getElementById("file-input").files[0];
-        const reader = new FileReader();
-        reader.addEventListener("load", function () {
-            preview.src = reader.result.toString(); // show image in <img> tag
-        }, false);
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-        document.getElementById("serverMsg").innerHTML = "";
-    }
-
-    function uploadFile() {
-        let file = document.getElementById("file-input").files[0];
-        if (file) {
-            let formData = new FormData();
-            formData.append('file', file);
-            fetch('/predict', {
-                method: 'POST',
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (!data["gender"]) {
-                        document.getElementById("serverMsg").innerHTML = data["error_message"].toString();
-                    } else {
-                        document.getElementById("serverMsg").innerHTML = data["gender"].toString();
-                    }
-                    let modelVersion = data["model_version"];
-                    document.getElementById("model_version").innerHTML = modelVersion.toString();
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-    }
-</script>
 <section class="upper">
 
-    <script type="text/javascript">
+    <script>
         function openPage(pageName, elmnt) {
             // Hide all elements with class="tabcontent" by default */
-            var i, tabcontent, tablinks;
+            let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
@@ -84,17 +48,27 @@
     <button class="tablink" onclick="openPage('right2-tab', this)">About</button>
     <div id="left-tab" class="tabcontent">
         <div id="input">
+
             <label for="file-input" id="input-label">Your Image File:</label><br>
-            <input type="file" class="button-17" id="file-input" onchange="previewFile()"><br>
-            <input type="button" class="button-17" role="button" id="upload-button" value="Evaluate Gender"
-                   onclick="uploadFile()">
+            <input type="file"
+                   class="button-17"
+                   id="file-input"
+                   onchange="myApp.previewFile()"
+                   accept=".png, .jpg, .jpeg, .bmp, .gif"><br>
+            <input type="button"
+                   class="button-17"
+                   role="button"
+                   id="upload-button"
+                   onclick="myApp.processImage()"
+                   value="Evaluate Gender">
+
         </div>
         <div id="output">
             <p id="serverMsg"></p>
-            <img height="" width="" src="" alt="">
+            <img height="" width="" src="" alt="" id="fileImage">
             <p>
                 This service is under continuous development.<br>
-                Current neural network version: <i id="model_version">to be acquired</i>
+                Current neural network version: <i id="model_version">to be aquired</i>
             </p>
         </div>
     </div>
@@ -112,22 +86,28 @@
         </script>
         <p>Click to copy wallet address</p>
         <ul class="not-list">
-            <li id="cryptoNano"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Nano</button>
+            <li id="cryptoNano">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Nano</button>
                 <span>nano_3ujggh8jzf61rktd4wjpfigjgkkpiemaepefzyqrtnqcweb1u1sefczk1oeg</span></li>
 
-            <li id="cryptoETC"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">EthereumClassic</button>
+            <li id="cryptoETC">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">EthereumClassic</button>
                 <span>0xdfbD0761CD05c1FE6408C2F77B08317cc9549C34</span></li>
 
-            <li id="cryptoRVN"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ravencoin</button>
+            <li id="cryptoRVN">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ravencoin</button>
                 <span>RWpQjKs5GUr65Z746NXftgAv4rDUe1XZPC</span></li>
 
-            <li id="cryptoETH"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ethereum</button>
+            <li id="cryptoETH">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Ethereum</button>
                 <span>0x26a1f94690e0A7dbf8fC3b46930227F400561F41</span></li>
 
-            <li id="cryptoBTC"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Bitcoin</button>
+            <li id="cryptoBTC">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Bitcoin</button>
                 <span>bc1qasscfpacns9qugk40lv5s3tk60svh205ssu9n2</span></li>
 
-            <li id="cryptoAE"><button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Aeternity</button>
+            <li id="cryptoAE">
+                <button class="copySpanOnClick" onclick="copy(this.parentNode.id)">Aeternity</button>
                 <span>ak_fHX26ZfVv9BuweaEJ7uZj6gFuMSM3rGnK9QNTdCdpRQCGRKXH</span></li>
         </ul>
     </div>
@@ -186,7 +166,8 @@
                     for the contents of the files that are uploaded through this service.
                 </li>
                 <li>The purposes of this service are purely recreational, if not comedic.<br>
-                    It is not meant to be perceived as a form of discrimination, or any of the similar concepts.</li>
+                    It is not meant to be perceived as a form of discrimination, or any of the similar concepts.
+                </li>
             </ol>
             <p>
                 <br>
@@ -195,13 +176,17 @@
         </div>
     </div>
     <div id="right2-tab" class="tabcontent">
-        <ul><h6>Project tech stack</h6>
+        <ul><h6>Project <i>initial</i> tech stack</h6>
             <li>Python 3.10</li>
             <li>FastAPI</li>
             <li>HTML, CSS, JavaScript</li>
             <li>Tensorflow, AioFiles, Pydantic</li>
             <li>Docker</li>
             <li>Serverless infrastructure</li>
+        </ul>
+        <ul><h6>Project <i>current</i> tech stack</h6>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Tensorflow.JS</li>
         </ul>
         <ol><h6>Roadmap</h6>
             <li>
@@ -222,9 +207,13 @@
             <li>
                 Blog Tab Section for project updates
             </li>
+            <li>
+                <s>Move to Frontend only</s>
+            </li>
         </ol>
     </div>
-    <script type="text/javascript">document.getElementById("defaultOpen").click();</script>
+    <script>document.getElementById("defaultOpen").click();</script>
+    <script src="./index.js"></script>
 </section>
 
 
@@ -238,6 +227,5 @@
 <section class="author">
     &copy; Stan Ermokhin | 2023
 </section>
-
 </body>
 </html>
