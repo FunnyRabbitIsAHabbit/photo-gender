@@ -268,8 +268,12 @@ header h2 span {
 
 }
 
-#right2-tab ol, ul, h6 {
+#right2-tab ol, #right2-tab ul, #right2-tab h6 {
     padding-left: 1vmin !important;
+}
+
+#about {
+    margin-inside: 1vw !important;
 }
 
 #middle-tab .not-list button {
@@ -290,5 +294,5 @@ header h2 span {
 }
 
 ul {
-    list-style-type: square;
+    list-style-type: none;
 }
