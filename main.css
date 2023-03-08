@@ -80,7 +80,7 @@ body {
     padding: 0;
 
     justify-content: inherit;
-    display: inline-grid;
+    display: none;
 }
 
 img {
@@ -118,7 +118,7 @@ header {
     border: none;
     outline: none;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: bolder;
     color: #2b1918;
 }
 
