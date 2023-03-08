@@ -64,7 +64,6 @@ html {
 }
 
 body {
-    min-height: 400px;
     min-width: 200px;
     margin-bottom: 100px;
     clear: both;
@@ -103,7 +102,7 @@ div, header {
     padding: 15px;
     text-align: center;
     text-align-all: match-parent;
-    font-size: 16px;
+    font-size: 2.5vmax;
     margin: auto;
     width: auto;
     justify-content: center;
@@ -140,8 +139,8 @@ header h2 span {
     padding: 3vmax 2vmax;
     margin-bottom: 5%;
     margin-top: 0;
-    font-size: 1.8vmax;
-    width: 25%; /*  100% / num_of_tabs  */
+    font-size: 2.1vmax;
+    width: 25%; /*  100% divided by number of tabs  */
 }
 
 .tablink:hover, #middle-tab .not-list button:hover {
@@ -154,15 +153,15 @@ header h2 span {
     height: 100%;
     margin: auto;
     justify-content: flex-end;
-    font-size: 15px;
+    font-size: 2.5vmax;
 }
 
 .author {
     justify-content: center;
     margin: auto;
     width: fit-content;
-    padding-top: 15px;
-    font-size: 12px;
+    padding: 2%;
+    font-size: 1.5vmax;
 }
 
 #input {
@@ -193,12 +192,12 @@ header h2 span {
     display: inline-flex;
     fill: currentcolor;
     margin-top: 4px;
-    font-size: 14px;
+    font-size: 1.5vmax;
     font-weight: 500;
     height: 48px;
     width: 200px;
     justify-content: center;
-    letter-spacing: .25px;
+    letter-spacing: 1px;
     line-height: normal;
     max-width: 100%;
     overflow: visible;
@@ -226,7 +225,7 @@ header h2 span {
 
 .button-17:focus {
     outline: none;
-    border: 2px solid #4285f4;
+    border: 2px solid #cd7667;
 }
 
 .button-17:not(:disabled) {
@@ -283,10 +282,10 @@ header h2 span {
 }
 
 #agreement {
-    font-size: inherit;
     justify-content: inherit;
     text-align: inherit;
     margin: fill;
+    padding-left: 3%;
     border-radius: 24px;
 }
 
