@@ -65,6 +65,7 @@ html {
 
 body {
     min-height: 400px;
+    min-width: 200px;
     margin-bottom: 100px;
     clear: both;
 }
@@ -76,7 +77,7 @@ body {
     right: 0;
     z-index: 99;
     width: 100%;
-    height: 5%;
+    height: 50px;
     padding-left: 0;
 
     justify-content: inherit;
@@ -95,14 +96,14 @@ img {
 }
 
 #serverMsg {
-    padding: 0px;
+    padding: 0;
 }
 
 div, header {
     padding: 15px;
     text-align: center;
     text-align-all: match-parent;
-    font-size: large;
+    font-size: 16px;
     margin: auto;
     width: auto;
     justify-content: center;
@@ -121,7 +122,6 @@ header {
     outline: none;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 3vmin;
     color: #2b1918;
 }
 
@@ -140,7 +140,7 @@ header h2 span {
     padding: 3vmax 2vmax;
     margin-bottom: 5%;
     margin-top: 0;
-    font-size: 3.5vmin;
+    font-size: 1.8vmax;
     width: 25%; /*  100% / num_of_tabs  */
 }
 
@@ -154,7 +154,7 @@ header h2 span {
     height: 100%;
     margin: auto;
     justify-content: flex-end;
-    font-size: 2vmax;
+    font-size: 15px;
 }
 
 .author {
@@ -162,7 +162,7 @@ header h2 span {
     margin: auto;
     width: fit-content;
     padding-top: 15px;
-    font-size: 1.5vmax;
+    font-size: 12px;
 }
 
 #input {
@@ -173,7 +173,6 @@ header h2 span {
 
 #output {
     height: auto;
-    font-size: 2vmax;
     max-width: 80%;
 }
 
@@ -257,7 +256,6 @@ header h2 span {
 
 #right-tab {
     justify-content: left;
-    font-size: medium;
     text-align: left;
 }
 
