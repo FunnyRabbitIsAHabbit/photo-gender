@@ -65,7 +65,7 @@ html {
 
 body {
     min-width: 200px;
-    margin-bottom: 100px;
+    margin-bottom: 5%;
     clear: both;
 }
 
@@ -140,7 +140,6 @@ header h2 span {
     margin-bottom: 5%;
     margin-top: 0;
     font-size: 2.7vw;
-    font-weight: lighter;
     width: 25%; /*  100% divided by number of tabs  */
 }
 
