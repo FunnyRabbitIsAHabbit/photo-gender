@@ -80,7 +80,7 @@ body {
     padding: 0;
 
     justify-content: inherit;
-    display: block;
+    display: inline-flex;
 }
 
 img {
