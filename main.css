@@ -20,7 +20,7 @@ CSS File for the project
     }
 
     #agreement {
-        background-color: #704137;
+        background-color: #a6665e;
     }
 
     .advertisement {
@@ -80,7 +80,7 @@ body {
     padding: 0;
 
     justify-content: inherit;
-    display: inline-flex;
+    display: block;
 }
 
 img {
@@ -100,7 +100,7 @@ div, header {
     padding: 15px;
     text-align: center;
     text-align-all: match-parent;
-    font-size: 2.5vw;
+    font-size: 2.5dvb;
     margin: auto;
     width: auto;
     justify-content: center;
@@ -137,7 +137,8 @@ header h2 span {
     padding: 2.5vmax 2vmin;
     margin-bottom: 5%;
     margin-top: 0;
-    font-size: 2.7vw;
+    font-size: 2.6dvb;
+    font-weight: 300;
     width: 25%; /*  100% divided by number of tabs  */
 }
 
@@ -157,8 +158,8 @@ header h2 span {
     justify-content: center;
     margin: auto;
     width: fit-content;
-    padding-bottom: 5vw;
-    font-size: 1.5vw;
+    padding-bottom: 5dvb;
+    font-size: 1.8dvb;
     font-weight: lighter;
 }
 
@@ -190,7 +191,7 @@ header h2 span {
     display: inline-flex;
     fill: currentcolor;
     margin-top: 4px;
-    font-size: 12px;
+    font-size: 2dvb;
     height: 48px;
     width: 200px;
     justify-content: center;
@@ -270,7 +271,7 @@ header h2 span {
 }
 
 #about {
-    margin-inside: 1vw !important;
+    margin-inside: 1dvb !important;
 }
 
 #middle-tab .not-list button {
@@ -284,10 +285,14 @@ header h2 span {
 #agreement {
     justify-content: inherit;
     text-align: inherit;
-    margin: 1vw 10vw 1vw 10vw;
+    margin: 1vw 7vw 1vw 7vw;
     padding: 5vw 5vw 1vw 3vw;
     border-radius: 24px;
-    font-size: 2vw;
+    font-size: 2dvb;
+}
+
+#agreement ul {
+    list-style-type: square;
 }
 
 ul {
