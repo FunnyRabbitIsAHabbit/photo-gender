@@ -4,13 +4,6 @@ class MyModel {
         this.modelUrl = "./model/model.json";
         this.modelVersion = "4.2.1";
         tf.setBackend("webgl");
-        this.loadModel().then(() => {
-            const warmupResult = this.model.predict(tf.zeros([1, 224, 224, 3]));
-            warmupResult.data().then(res =>
-                console.log(
-                    "Warmed up!!! Result for zeros: " + res));
-            warmupResult.dispose();
-        });
         console.log("Tensorflow backend: " + tf.getBackend());
 
     }
@@ -27,7 +20,6 @@ class MyModel {
         const targetDim = 224;
 
         let tensor = tf.image.resizeBilinear(pixelData, [targetDim, targetDim]);
-        // tensor = tf.cast(tensor, "float32")
         tensor = tensor.expandDims(0); // Reshape again to fit training model [N:=1, 224, 224, 3]
 
         return tensor;
@@ -45,8 +37,7 @@ class MyModel {
 
         const result = this.model.predict(preprocessedInput);
         const gender = result.data().then(res => {
-                const gender = res > threshold ? "male" : "female";
-                return gender;
+            return res > threshold ? "male" : "female";
             }
         );
 
@@ -70,6 +61,17 @@ class PredictionApp {
     }
 
     async previewFile(event = null) {
+
+        if (!this.model.model) {
+            this.model.loadModel().then(() => {
+            const warmupResult = this.model.model.predict(tf.zeros([1, 224, 224, 3]));
+            warmupResult.data().then(res =>
+                console.log(
+                    "Warmed up!!! Result for zeros: " + res));
+            warmupResult.dispose();
+        });
+
+        }
 
         const preview = document.getElementById(this.imgId);
         const files = document.getElementById(this.fileId);
