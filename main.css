@@ -100,7 +100,7 @@ div, header {
     padding: 15px;
     text-align: center;
     text-align-all: match-parent;
-    font-size: 2.5dvb;
+    font-size: 2.5vh;
     margin: auto;
     width: auto;
     justify-content: center;
@@ -126,18 +126,21 @@ header h2 span {
     font-family: "Arial Black", sans-serif;
 }
 
+.tablinks {
+    margin-bottom: 10vh;
+}
+
 .tablink, #middle-tab .not-list button {
+    display: inline-flex;
     background-color: #3d2321;
     color: white;
     float: left;
-    justify-self: start;
+    justify-content: center;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 2.5vmax 2vmin;
-    margin-bottom: 5%;
-    margin-top: 0;
-    font-size: 2.6dvb;
+    padding: 3vh;
+    font-size: 2.6vh;
     font-weight: 100;
     width: 25%; /*  100% divided by number of tabs  */
 }
@@ -155,11 +158,10 @@ header h2 span {
 }
 
 .author {
-    justify-content: center;
     margin: auto;
     width: fit-content;
-    padding-bottom: 5dvb;
-    font-size: 1.8dvb;
+    padding: 2.5vh 2.5vh;
+    font-size: 1.8vh;
     font-weight: 100;
 }
 
@@ -191,7 +193,7 @@ header h2 span {
     display: inline-flex;
     fill: currentcolor;
     margin-top: 4px;
-    font-size: 2dvb;
+    font-size: 2vh;
     height: 48px;
     width: 200px;
     justify-content: center;
@@ -271,7 +273,7 @@ header h2 span {
 }
 
 #about {
-    margin-inside: 1dvb !important;
+    margin-inside: 1vh !important;
 }
 
 #middle-tab .not-list button {
@@ -285,10 +287,10 @@ header h2 span {
 #agreement {
     justify-content: inherit;
     text-align: inherit;
-    margin: 1vw 7vw 1vw 7vw;
-    padding: 5vw 5vw 1vw 3vw;
+    margin: 1vh 3vh 1vh 3vh;
+    padding: 3vh 3vh 1vh 3vh;
     border-radius: 24px;
-    font-size: 2dvb;
+    font-size: 2vh;
 }
 
 #agreement ul {
