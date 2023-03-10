@@ -37,7 +37,7 @@ class MyModel {
 
         const result = this.model.predict(preprocessedInput);
         const gender = result.data().then(res => {
-            return res > threshold ? "male" : "female";
+                return res > threshold ? "male" : "female";
             }
         );
 
@@ -60,18 +60,20 @@ class PredictionApp {
 
     }
 
-    async previewFile(event = null) {
-
+    async onClickWarmUp(event = null) {
         if (!this.model.model) {
             this.model.loadModel().then(() => {
-            const warmupResult = this.model.model.predict(tf.zeros([1, 224, 224, 3]));
-            warmupResult.data().then(res =>
-                console.log(
-                    "Warmed up!!! Result for zeros: " + res));
-            warmupResult.dispose();
-        });
+                const warmupResult = this.model.model.predict(tf.zeros([1, 224, 224, 3]));
+                warmupResult.data().then(res =>
+                    console.log(
+                        "Warmed up!!! Result for zeros: " + res));
+                warmupResult.dispose();
+            });
 
         }
+    }
+
+    async previewFile(event = null) {
 
         const preview = document.getElementById(this.imgId);
         const files = document.getElementById(this.fileId);
