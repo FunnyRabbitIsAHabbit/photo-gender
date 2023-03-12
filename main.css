@@ -79,7 +79,8 @@ body {
     height: 8%;
     padding: 0;
 
-    justify-content: inherit;
+    align-items: center;
+    font-family: "Avenir Next Condensed", sans-serif;
     display: inline-flex;
 }
 
@@ -127,7 +128,7 @@ header h2 span {
 }
 
 .tablinks {
-    margin-bottom: 10vh;
+    margin-bottom: 8.6vh; /* = padding*2 + font-size */
 }
 
 .tablink, #middle-tab .not-list button {
